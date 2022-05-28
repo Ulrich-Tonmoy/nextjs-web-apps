@@ -1,4 +1,7 @@
-# Project view
+# Realstate
+A Realstate website build with NextJS, chakra-ui and RestAPI from Rapid API. Here user can search(search can be done total 11 properties including locations and theres front-end routing for search so the link can be shared with others to find the same properties) for properties to buy or rent but theres no authentication for the app.
+
+## Screenshot
 
 <img alt="ss1" src="https://github.com/Ulrich-Tonmoy/website-nextjs/blob/main/realstate/ss/ss1.png" />
 <img alt="ss2" src="https://github.com/Ulrich-Tonmoy/website-nextjs/blob/main/realstate/ss/ss2.png" />
