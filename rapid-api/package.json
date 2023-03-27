@@ -46,12 +46,14 @@
     "zod": "^3.21.4"
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.14",
+    "@tailwindcss/typography": "^0.5.9",
     "@types/node": "18.15.10",
     "@types/react": "18.0.29",
     "@types/react-dom": "18.0.11",
+    "autoprefixer": "^10.4.14",
     "postcss": "^8.4.21",
-    "typescript": "5.0.2",
-    "tailwindcss": "^3.2.7"
+    "tailwindcss": "^3.2.7",
+    "tailwindcss-animate": "^1.0.5",
+    "typescript": "5.0.2"
   }
 }
