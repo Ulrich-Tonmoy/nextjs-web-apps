@@ -1,21 +1,30 @@
 # Realstate
-A Realstate website build with NextJS, chakra-ui and RestAPI from Rapid API. Here user can search(search can be done total 11 properties including locations and theres front-end routing for search so the link can be shared with others to find the same properties) for properties to buy or rent but theres no authentication for the app.
 
-## Screenshot
+A Realstate website build with NextJS, chakra-ui and RestAPI from Rapid API. Here user can search using these 11 filters (Purpose, Rent Frequency, Min Price, Max Price, SortBy, Max Area, Rooms, Baths, Furnish Types, Property Types and Locations). In the Property page theres scrolling image viewer and all other information in details and theres front-end routing for search so the link can be shared with others to find the same properties for properties to buy or rent.
 
-<img alt="ss1" src="https://github.com/Ulrich-Tonmoy/website-nextjs/blob/main/realstate/ss/ss1.png" />
-<img alt="ss2" src="https://github.com/Ulrich-Tonmoy/website-nextjs/blob/main/realstate/ss/ss2.png" />
+## Feature Screenshot
+
+<p align="center">
+<img alt="Home" src="https://github.com/Ulrich-Tonmoy/website-nextjs/blob/main/realstate/ss/ss1.png" width="360px"/>
+<img alt="Search" src="https://github.com/Ulrich-Tonmoy/website-nextjs/blob/main/realstate/ss/ss2.png" width="360px"/>
+<img alt="Info" src="https://github.com/Ulrich-Tonmoy/website-nextjs/blob/main/realstate/ss/ss3.png" width="360px"/>
+<img alt="Info" src="https://github.com/Ulrich-Tonmoy/website-nextjs/blob/main/realstate/ss/ss4.png" width="360px"/>
+</p>
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
 
-First, run the development server:
+To start the project Run:
 
-```bash
+```properties
+npm i
+```
+
+then
+
+```properties
 npm run dev
-# or
-yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
@@ -30,8 +39,8 @@ The `pages/api` directory is mapped to `/api/*`. Files in this directory are tre
 
 To learn more about Next.js, take a look at the following resources:
 
--   [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
--   [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
