@@ -15,6 +15,7 @@ Techs used
 - [Prisma](https://prisma.io)
 - [Tailwind CSS](https://tailwindcss.com) - [Flowbite](https://flowbite.com/)
 - [tRPC](https://trpc.io)
+- [React Hook Form](https://react-hook-form.com/)
 
 To run The app
 
