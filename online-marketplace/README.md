@@ -8,11 +8,25 @@ We try to keep this project as simple as possible, so you can start with just th
 
 If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
 
+Techs used
+
 - [Next.js](https://nextjs.org)
 - [Clerk Auth](https://clerk.com/)
 - [Prisma](https://prisma.io)
 - [Tailwind CSS](https://tailwindcss.com) - [Flowbite](https://flowbite.com/)
 - [tRPC](https://trpc.io)
+
+To run The app
+
+```properties
+npm run dev
+```
+
+To run Database
+
+```properties
+npx prisma studio
+```
 
 ## Learn More
 
