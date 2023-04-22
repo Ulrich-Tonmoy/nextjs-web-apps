@@ -29,7 +29,8 @@ export const listingsRouter = createTRPCRouter({
         message: true,
       },
     });
-    return listing.flatMap((item) => item.message);
+    // return listing.flatMap((item) => item.message);
+    return listing;
   }),
   sendMessage: protectedProcedure
     .input(z.object({ message: z.string(), listingId: z.string() }))

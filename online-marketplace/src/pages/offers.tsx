@@ -3,7 +3,7 @@ import Head from "next/head";
 import { api } from "~/utils/api";
 
 const Home: NextPage = () => {
-  const messages = api.listings.getMessage.useQuery();
+  const listings = api.listings.getMessage.useQuery();
 
   return (
     <>
@@ -24,20 +24,28 @@ const Home: NextPage = () => {
                     From
                   </th>
                   <th scope="col" className="px-6 py-3">
+                    For
+                  </th>
+                  <th scope="col" className="px-6 py-3">
                     Message
                   </th>
                 </tr>
               </thead>
               <tbody>
-                {messages.data?.map((message) => (
-                  <tr
-                    key={message.id}
-                    className="border-b bg-white dark:border-gray-700 dark:bg-gray-800"
-                  >
-                    <td className="px-6 py-4">{message.fromUserName}</td>
-                    <td className="px-6 py-4">{message.message}</td>
-                  </tr>
-                ))}
+                {listings.data?.map((listing) =>
+                  listing?.message?.map((message) => (
+                    <tr
+                      key={message.id}
+                      className="border-b bg-white dark:border-gray-700 dark:bg-gray-800"
+                    >
+                      <td className="px-6 py-4">
+                        {message.fromUserName ?? message.fromUser}
+                      </td>
+                      <td className="px-6 py-4">{listing.name}</td>
+                      <td className="px-6 py-4">{message.message}</td>
+                    </tr>
+                  ))
+                )}
               </tbody>
             </table>
           </div>
