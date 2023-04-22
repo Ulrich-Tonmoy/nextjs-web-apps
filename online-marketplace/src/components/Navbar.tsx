@@ -1,4 +1,5 @@
 import { SignInButton, UserButton, useUser } from "@clerk/nextjs";
+import Image from "next/image";
 import Link from "next/link";
 
 export function NavBar() {
@@ -8,6 +9,13 @@ export function NavBar() {
     <nav className="border-gray-200 bg-white dark:bg-gray-900">
       <div className="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between p-4">
         <Link href="/" className="flex items-center">
+          <Image
+            src="https://flowbite.com/docs/images/logo.svg"
+            className="mr-3 h-8"
+            alt="Flowbite Logo"
+            width={50}
+            height={50}
+          />
           <span className="self-center whitespace-nowrap text-2xl font-semibold dark:text-white">
             MarketPlace
           </span>
