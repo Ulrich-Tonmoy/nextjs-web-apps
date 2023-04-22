@@ -10,15 +10,15 @@ export const listingsRouter = createTRPCRouter({
   list: publicProcedure.query(({ ctx }) => {
     return ctx.prisma.listing.findMany();
   }),
-  // get: publicProcedure
-  //   .input(z.object({ listingId: z.string() }))
-  //   .query(({ ctx, input }) => {
-  //     return ctx.prisma.listing.findUnique({
-  //       where: {
-  //         id: input.listingId,
-  //       },
-  //     });
-  //   }),
+  get: publicProcedure
+    .input(z.object({ listingId: z.string() }))
+    .query(({ ctx, input }) => {
+      return ctx.prisma.listing.findUnique({
+        where: {
+          id: input.listingId,
+        },
+      });
+    }),
   // getMessage: protectedProcedure.query(async ({ input, ctx }) => {
   //   const userId = ctx.auth.userId;
   //   const listing = await ctx.prisma.listing.findMany({
