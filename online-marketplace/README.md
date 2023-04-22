@@ -8,6 +8,20 @@ We try to keep this project as simple as possible, so you can start with just th
 
 If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
 
+## About the Project
+
+It's a market place application where user can put their items for sale and buyer can sent message. And the authentication is done by Clerk.
+
+<p align="center">
+<img alt="screenshot" src="https://github.com/Ulrich-Tonmoy/website-nextjs/blob/main/online-marketplace/docs/1.png" width="330px"/>
+<img alt="screenshot" src="https://github.com/Ulrich-Tonmoy/website-nextjs/blob/main/online-marketplace/docs/2.png" width="330px"/>
+<img alt="screenshot" src="https://github.com/Ulrich-Tonmoy/website-nextjs/blob/main/online-marketplace/docs/3.png" width="330px"/>
+<img alt="screenshot" src="https://github.com/Ulrich-Tonmoy/website-nextjs/blob/main/online-marketplace/docs/4.png" width="330px"/>
+<img alt="screenshot" src="https://github.com/Ulrich-Tonmoy/website-nextjs/blob/main/online-marketplace/docs/5.png" width="330px"/>
+<img alt="screenshot" src="https://github.com/Ulrich-Tonmoy/website-nextjs/blob/main/online-marketplace/docs/6.png" width="330px"/>
+<img alt="screenshot" src="https://github.com/Ulrich-Tonmoy/website-nextjs/blob/main/online-marketplace/docs/7.png" width="330px"/>
+</p>
+
 Techs used
 
 - [Next.js](https://nextjs.org)
