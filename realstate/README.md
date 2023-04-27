@@ -5,10 +5,10 @@ A Realstate website build with NextJS, chakra-ui and RestAPI from Rapid API. Her
 ## Feature Screenshot
 
 <p align="center">
-<img alt="Home" src="https://github.com/Ulrich-Tonmoy/website-nextjs/blob/main/realstate/ss/ss1.png" width="360px"/>
-<img alt="Search" src="https://github.com/Ulrich-Tonmoy/website-nextjs/blob/main/realstate/ss/ss2.png" width="360px"/>
-<img alt="Info" src="https://github.com/Ulrich-Tonmoy/website-nextjs/blob/main/realstate/ss/ss3.png" width="360px"/>
-<img alt="Info" src="https://github.com/Ulrich-Tonmoy/website-nextjs/blob/main/realstate/ss/ss4.png" width="360px"/>
+<img alt="Home" src="https://github.com/Ulrich-Tonmoy/website-nextjs/blob/main/realstate/docs/ss1.png" width="360px"/>
+<img alt="Search" src="https://github.com/Ulrich-Tonmoy/website-nextjs/blob/main/realstate/docs/ss2.png" width="360px"/>
+<img alt="Info" src="https://github.com/Ulrich-Tonmoy/website-nextjs/blob/main/realstate/docs/ss3.png" width="360px"/>
+<img alt="Info" src="https://github.com/Ulrich-Tonmoy/website-nextjs/blob/main/realstate/docs/ss4.png" width="360px"/>
 </p>
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
