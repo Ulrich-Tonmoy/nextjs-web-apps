@@ -5,6 +5,8 @@ import { FaArrowAltCircleLeft, FaArrowAltCircleRight } from "react-icons/fa";
 import { ScrollMenu, VisibilityContext } from "react-horizontal-scrolling-menu";
 import "react-horizontal-scrolling-menu/dist/styles.css";
 
+const d = ["none", "none", "none", "block"].join(" ");
+
 const LeftArrow = () => {
   const { scrollPrev } = useContext(VisibilityContext);
 
@@ -15,7 +17,7 @@ const LeftArrow = () => {
         onClick={() => scrollPrev()}
         fontSize="2xl"
         cursor="pointer"
-        d={["none", "none", "none", "block"]}
+        d={d}
       />
     </Flex>
   );
@@ -31,16 +33,16 @@ const RightArrow = () => {
         onClick={() => scrollNext()}
         fontSize="2xl"
         cursor="pointer"
-        d={["none", "none", "none", "block"]}
+        d={d}
       />
     </Flex>
   );
 };
 
-export default function ImageScrollbar({ images }) {
+export default function ImageScrollbar({ images }: any) {
   return (
     <ScrollMenu LeftArrow={LeftArrow} RightArrow={RightArrow} style={{ overflow: "hidden" }}>
-      {images.map((image) => (
+      {images.map((image: any) => (
         <Box width="910px" itemId={image.id} overflow="hidden" p="1" key={image.id}>
           <Image
             placeholder="blur"
