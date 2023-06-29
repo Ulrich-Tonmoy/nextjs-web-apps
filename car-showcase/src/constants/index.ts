@@ -3,6 +3,7 @@ export const manufacturers = [
   "Alfa Romeo",
   "Aston Martin",
   "Audi",
+  "Bugatti",
   "Bentley",
   "BMW",
   "Buick",
