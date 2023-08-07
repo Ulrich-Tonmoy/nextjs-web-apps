@@ -3,6 +3,7 @@ const nextConfig = {
   experimental: {
     serverActions: true,
     serverComponentsExternalPackages: ["mongoose"],
+    serverActionsBodySizeLimit: "2mb",
   },
   eslint: {
     ignoreDuringBuilds: true,
@@ -16,10 +17,6 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "images.clerk.dev",
-      },
-      {
-        protocol: "https",
-        hostname: "uploadthing.com",
       },
       {
         protocol: "https",
