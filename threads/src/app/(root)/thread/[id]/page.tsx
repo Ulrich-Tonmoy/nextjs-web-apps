@@ -1,4 +1,5 @@
 import ThreadCard from "@/components/cards/ThreadCard";
+import Comment from "@/components/forms/Comment";
 import { fetchThreadById } from "@/lib/actions/thread.actions";
 import { fetchUser } from "@/lib/actions/user.actions";
 import { currentUser } from "@clerk/nextjs";
@@ -29,6 +30,32 @@ const Page = async ({ params }: { params: { id: string } }) => {
           createdAt={thread.createdAt}
           comments={thread.children}
         />
+      </div>
+
+      <div className="mt-7">
+        <Comment
+          threadId={thread._id.toHexString()}
+          currentUserImg={userInfo.image}
+          currentUserId={userInfo._id}
+        />
+      </div>
+
+      <div className="mt-10">
+        {thread.children.map((child: any, i: number) => (
+          <ThreadCard
+            key={i}
+            id={child._id.toHexString()}
+            currentUserId={child?.id || ""}
+            parentId={child.parentId}
+            content={child.thread}
+            image={child.image}
+            author={child.author}
+            community={child.community}
+            createdAt={child.createdAt}
+            comments={child.children}
+            isComment
+          />
+        ))}
       </div>
     </section>
   );

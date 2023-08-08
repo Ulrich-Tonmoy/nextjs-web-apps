@@ -153,7 +153,7 @@
 
 /* Comment Form */
 .comment-form {
-  @apply mt-10 flex items-center gap-4 border-y border-y-dark-4 py-5 max-xs:flex-col !important;
+  @apply mt-10 flex items-center gap-4 border-y border-y-dark-4 py-5 flex-col !important;
 }
 
 .comment-form_btn {

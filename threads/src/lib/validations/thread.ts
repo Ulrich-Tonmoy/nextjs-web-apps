@@ -14,4 +14,5 @@ export const CommentValidation = z.object({
     .string()
     .nonempty()
     .min(3, { message: "Minimum 3 characters required" }),
+  image: z.string().nullable(),
 });
