@@ -1,12 +1,15 @@
 # Website Built With NextJS
 
-<p align="center">
-<a href="https://github.com/Ulrich-Tonmoy/website-nextjs/tree/main/realstate">
-<img alt="RealState" src="https://github.com/Ulrich-Tonmoy/website-nextjs/blob/main/realstate/docs/ss1.png" width="330px"/>
-</a>
-<a href="https://github.com/Ulrich-Tonmoy/website-nextjs/tree/main/metaverse-landing-page">
-<img alt="Metaverse Landing Page" src="https://github.com/Ulrich-Tonmoy/website-nextjs/blob/main/metaverse-landing-page/docs/1.png" width="330px"/>
-<a href="https://github.com/Ulrich-Tonmoy/website-nextjs/tree/main/online-marketplace">
-<img alt="Online Marketplace" src="https://github.com/Ulrich-Tonmoy/website-nextjs/blob/main/online-marketplace/docs/3.png" width="330px"/>
-</a>
+<p align="center" title="RealState">
+  <a href="./realstate">
+    <img alt="RealState" src="./realstate/docs/ss1.png" width="330px"/>
+  </a>
+  <a href="./threads" title="Threads">
+    <img alt="Threads" src="./threads/docs/3.png" width="330px"/>
+  </a>
+  <a href="./metaverse-landing-page" title="Metaverse Landing Page">
+    <img alt="Metaverse Landing Page" src="./metaverse-landing-page/docs/1.png" width="330px"/>
+  <a href="./online-marketplace" title="Online Marketplace">
+    <img alt="Online Marketplace" src="./online-marketplace/docs/3.png" width="330px"/>
+  </a>
 </p>
