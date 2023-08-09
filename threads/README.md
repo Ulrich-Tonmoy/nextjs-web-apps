@@ -1,5 +1,21 @@
 # Threads
 
+Thread clone built using Next js, Clerk Auth, MongoDB, shadcn-ui, tailwind, zod, react-hook-form. User can create and reply to others thread as well as join a community or create one. Admin of a community can create thread as the community. User can search users or communities from the search or communities navigation. User view any activity of their threads for example if some one reply to your thread you will be able view all these in the activity page. User can view his profile and will be able to view all his thread there.
+
+## Screenshots
+
+<p align="center">
+<img alt="sign-in" src="./docs/1.png" width="330px"/>
+<img alt="signup" src="./docs/2.png" width="330px"/>
+<img alt="home" src="./docs/3.png" width="330px"/>
+<img alt="search" src="./docs/4.png" width="330px"/>
+<img alt="activity" src="./docs/5.png" width="330px"/>
+<img alt="create" src="./docs/6.png" width="330px"/>
+<img alt="profile" src="./docs/7.png" width="330px"/>
+<img alt="single thread" src="./docs/8.png" width="330px"/>
+<img alt="single thread" src="./docs/9.png" width="330px"/>
+</p>
+
 ## To Run
 
 1. Create a MongoDB Cluster and update the env variable `MONGODB_URL`.
