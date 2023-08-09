@@ -1,3 +1,11 @@
+# Threads
+
+## To Run
+
+1. Create a MongoDB Cluster and update the env variable `MONGODB_URL`.
+2. Create Clerk Project and update the env variable `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` and `CLERK_SECRET_KEY`.
+3. Deploy the app and create a webhook endpoint with the `deployedurl/api/webhook/clerk` in the project webhook and update env variable `NEXT_CLERK_WEBHOOK_SECRET`. (this is needed for the community functionality whether you want to run locally or deploy)
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
