@@ -14,12 +14,19 @@ interface FileUploadProps {
 export const FileUpload = ({ onChange, value }: FileUploadProps) => {
   const fileType = value?.split(".").pop();
 
+  const onDelete = async () => {
+    // TODO: Check this functionality
+    const img = value.split("file/")[1] ?? "";
+    const { data, error } = await supabase.storage.from("file").remove([img]);
+    onChange("");
+  };
+
   if (value && fileType !== "pdf") {
     return (
       <div className="relative w-20 h-20">
         <Image fill src={value} alt="Upload" className="rounded-full" />
         <button
-          onClick={() => onChange("")}
+          onClick={() => onDelete()}
           className="absolute top-0 right-0 p-1 text-white rounded-full shadow-sm bg-rose-500"
           type="button"
         >
@@ -42,7 +49,7 @@ export const FileUpload = ({ onChange, value }: FileUploadProps) => {
           {value}
         </a>
         <button
-          onClick={() => onChange("")}
+          onClick={() => onDelete()}
           className="absolute p-1 text-white rounded-full shadow-sm bg-rose-500 -top-2 -right-2"
           type="button"
         >
@@ -53,12 +60,15 @@ export const FileUpload = ({ onChange, value }: FileUploadProps) => {
   }
 
   const handleFileUpload = async (file: any) => {
-    const { data, error } = await supabase.storage.from("file").upload(uuidv4() + file.name, file, {
-      cacheControl: "3600",
-      upsert: false,
-    });
+    const { data, error } = await supabase.storage
+      .from("file")
+      .upload(uuidv4() + file.name, file, {
+        cacheControl: "3600",
+        upsert: false,
+      });
     onChange(
-      "https://gxofqswgvpwamruhdboy.supabase.co/storage/v1/object/public/file/" + data?.path
+      "https://gxofqswgvpwamruhdboy.supabase.co/storage/v1/object/public/file/" +
+        data?.path,
     );
   };
 

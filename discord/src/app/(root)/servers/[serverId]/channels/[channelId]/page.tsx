@@ -42,8 +42,13 @@ const ChannelPage = async ({ params }: ChannelPageProps) => {
 
   return (
     <div className="bg-white dark:bg-[#313338] flex flex-col h-full">
-      <ChatHeader name={channel.name} channelType={channel.type}  serverId={channel.serverId} type="channel" />
-      {/* {channel.type === ChannelType.TEXT && (
+      <ChatHeader
+        name={channel.name}
+        channelType={channel.type}
+        serverId={channel.serverId}
+        type="channel"
+      />
+      {channel.type === ChannelType.TEXT && (
         <>
           <ChatMessages
             member={member}
@@ -69,7 +74,7 @@ const ChannelPage = async ({ params }: ChannelPageProps) => {
             }}
           />
         </>
-      )} */}
+      )}
       {/* {channel.type === ChannelType.AUDIO && (
         <MediaRoom chatId={channel.id} video={false} audio={true} />
       )}
