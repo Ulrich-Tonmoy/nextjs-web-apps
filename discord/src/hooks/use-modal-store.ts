@@ -20,6 +20,7 @@ interface ModalData {
   channelType?: ChannelType;
   apiUrl?: string;
   query?: Record<string, any>;
+  fileUrl?: string | any;
 }
 
 interface ModalStore {
