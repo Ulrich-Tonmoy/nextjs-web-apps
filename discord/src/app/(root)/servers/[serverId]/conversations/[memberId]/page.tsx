@@ -5,8 +5,8 @@ import { db } from "@/lib/db";
 import { getOrCreateConversation } from "@/lib/conversation";
 import { currentProfile } from "@/lib/current-profile";
 import ChatHeader from "@/components/chat/chat-header";
-// import { ChatMessages } from "@/components/chat/chat-messages";
-// import { ChatInput } from "@/components/chat/chat-input";
+import ChatMessages from "@/components/chat/chat-messages";
+import ChatInput from "@/components/chat/chat-input";
 // import { MediaRoom } from "@/components/media-room";
 
 interface MemberPageProps {
@@ -40,7 +40,10 @@ const MemberPage = async ({ params, searchParams }: MemberPageProps) => {
     return redirect("/");
   }
 
-  const conversation = await getOrCreateConversation(currentMember.id, params.memberId);
+  const conversation = await getOrCreateConversation(
+    currentMember.id,
+    params.memberId,
+  );
 
   if (!conversation) {
     return redirect(`/servers/${params.serverId}`);
@@ -48,7 +51,8 @@ const MemberPage = async ({ params, searchParams }: MemberPageProps) => {
 
   const { memberOne, memberTwo } = conversation;
 
-  const otherMember = memberOne.profileId === profile.id ? memberTwo : memberOne;
+  const otherMember =
+    memberOne.profileId === profile.id ? memberTwo : memberOne;
 
   return (
     <div className="bg-white dark:bg-[#313338] flex flex-col h-full">
@@ -59,7 +63,7 @@ const MemberPage = async ({ params, searchParams }: MemberPageProps) => {
         type="conversation"
       />
       {/* {searchParams.video && <MediaRoom chatId={conversation.id} video={true} audio={true} />} */}
-      {/* {!searchParams.video && (
+      {!searchParams.video && (
         <>
           <ChatMessages
             member={currentMember}
@@ -83,7 +87,7 @@ const MemberPage = async ({ params, searchParams }: MemberPageProps) => {
             }}
           />
         </>
-      )} */}
+      )}
     </div>
   );
 };
