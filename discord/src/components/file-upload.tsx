@@ -45,7 +45,7 @@ export const FileUpload = ({ onChange, value }: FileUploadProps) => {
           rel="noopener noreferrer"
           className="ml-2 text-sm text-indigo-500 dark:text-indigo-400 hover:underline"
         >
-          {value}
+          {value.split("file/").pop()}
         </a>
         <button
           onClick={() => onDelete()}
@@ -59,12 +59,15 @@ export const FileUpload = ({ onChange, value }: FileUploadProps) => {
   }
 
   const handleFileUpload = async (file: any) => {
-    const { data, error } = await supabase.storage.from("file").upload(uuidv4() + file.name, file, {
-      cacheControl: "3600",
-      upsert: false,
-    });
+    const { data, error } = await supabase.storage
+      .from("file")
+      .upload(uuidv4() + file.name, file, {
+        cacheControl: "3600",
+        upsert: false,
+      });
     onChange(
-      "https://gxofqswgvpwamruhdboy.supabase.co/storage/v1/object/public/file/" + data?.path
+      "https://gxofqswgvpwamruhdboy.supabase.co/storage/v1/object/public/file/" +
+        data?.path,
     );
   };
 
