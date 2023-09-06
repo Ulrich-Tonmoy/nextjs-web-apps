@@ -5,7 +5,7 @@ import UserAvatar from "@/components/user-avatar";
 import { ChannelType } from "@prisma/client";
 import SocketIndicator from "@/components/socket-indicator";
 
-// import { ChatVideoButton } from "./chat-video-button";
+import ChatVideoButton from "./chat-video-button";
 
 interface ChatHeaderProps {
   serverId: string;
@@ -40,8 +40,7 @@ const ChatHeader = ({
       <p className="font-semibold text-black text-md dark:text-white">{name}</p>
       <div className="flex items-center ml-auto">
         {type === "conversation" && (
-          // <ChatVideoButton />
-          <div />
+          <ChatVideoButton />
         )}
         <SocketIndicator />
       </div>

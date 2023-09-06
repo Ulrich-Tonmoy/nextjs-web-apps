@@ -7,7 +7,7 @@ import { currentProfile } from "@/lib/current-profile";
 import ChatHeader from "@/components/chat/chat-header";
 import ChatMessages from "@/components/chat/chat-messages";
 import ChatInput from "@/components/chat/chat-input";
-// import { MediaRoom } from "@/components/media-room";
+import MediaRoom from "@/components/media-room";
 
 interface MemberPageProps {
   params: {
@@ -15,7 +15,7 @@ interface MemberPageProps {
     serverId: string;
   };
   searchParams: {
-    video?: boolean;
+    call?: boolean;
   };
 }
 
@@ -62,8 +62,8 @@ const MemberPage = async ({ params, searchParams }: MemberPageProps) => {
         serverId={params.serverId}
         type="conversation"
       />
-      {/* {searchParams.video && <MediaRoom chatId={conversation.id} video={true} audio={true} />} */}
-      {!searchParams.video && (
+      {searchParams.call && <MediaRoom chatId={conversation.id} video={true} audio={true} />}
+      {!searchParams.call && (
         <>
           <ChatMessages
             member={currentMember}
