@@ -1,7 +1,10 @@
 # Website Built With NextJS
 
-<p align="center" title="RealState">
-  <a href="./realstate">
+<p align="center">
+  <a href="./discord"title="Discord">
+    <img alt="Discord" src="./discord/docs/3.png" width="330px"/>
+  </a>
+  <a href="./realstate"title="RealState">
     <img alt="RealState" src="./realstate/docs/ss1.png" width="330px"/>
   </a>
   <a href="./threads" title="Threads">

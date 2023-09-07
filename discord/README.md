@@ -1,11 +1,13 @@
+# Discord
+
 ## Key Features
 
 1. Real-time messaging using Socket.io
 2. Send attachments as messages using Supabase
 3. Delete & Edit messages in real time for all users
-4. Create Text, Audio and Video call Channels
+4. Create Text, Audio and Video call (using livekit) Channels
 5. conversation between members
-6. video calls between members
+6. video calls between members (using livekit)
 7. Member management (Kick, Role change Guest / Moderator)
 8. Unique invite link generation & full working invite system
 9. Infinite loading for messages in batches of 10 (tanstack/query)
@@ -19,6 +21,18 @@
 17. Authentication with Clerk
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+
+## Screenshots
+
+<p align="center">
+  <img alt="Auth" src="./docs/1.png" width="330px"/>
+  <img alt="Auth" src="./docs/2.png" width="330px"/>
+  <img alt="Home Dark" src="./docs/3.png" width="330px"/>
+  <img alt="Home Light" src="./docs/4.png" width="330px"/>
+  <img alt="Modal" src="./docs/5.png" width="330px"/>
+  <img alt="Calling" src="./docs/6.png" width="330px"/>
+  <img alt="Direct Message" src="./docs/7.png" width="330px"/>
+</p>
 
 ## Getting Started
 
