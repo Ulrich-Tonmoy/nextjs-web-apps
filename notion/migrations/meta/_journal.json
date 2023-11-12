@@ -1,0 +1,27 @@
+{
+  "version": "5",
+  "dialect": "pg",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1699819500928,
+      "tag": "0000_careless_dragon_man",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1699819845341,
+      "tag": "0001_tidy_silver_samurai",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1699820579088,
+      "tag": "0002_conscious_unicorn",
+      "breakpoints": true
+    }
+  ]
+}
