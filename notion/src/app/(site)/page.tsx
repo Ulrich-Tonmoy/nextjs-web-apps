@@ -67,7 +67,7 @@ const Home = () => {
           <Image src={Cal} alt="Banner" className="rounded-2xl" />
         </div>
       </section>
-      <section className="relative">
+      <section id="testimonials" className="relative">
         <div className="w-full blur-[120px] rounded-full h-32 absolute bg-brand-primaryPurple/50 -z-100 top-56" />
         <div className="mt-20 px-4 sm:px-6  flex flex-col overflow-x-hidden overflow-visible">
           <TitleSection
@@ -113,7 +113,7 @@ const Home = () => {
           ))}
         </div>
       </section>
-      <section className="mt-20 pb-28 px-4 sm:px-6">
+      <section id="pricing" className="mt-20 pb-28 px-4 sm:px-6">
         <TitleSection
           title="The Perfect Plan For You"
           subheading="Experience all the benefits of our platform. Select a plan that suits your needs and take your productivity to new heights."
