@@ -44,59 +44,64 @@ const SignIn = () => {
   };
 
   return (
-    <Form {...form}>
-      <form
-        onChange={() => {
-          if (submitError) setSubmitError("");
-        }}
-        onSubmit={form.handleSubmit(onSubmit)}
-        className="w-full sm:justify-center sm:w-[400px] space-y-6 flex flex-col"
-      >
-        <Link href="/" className="w-full flex justify-left items-center">
-          <Image src={Logo} alt="Notion Logo" width={50} height={50} />
-          <span className="font-semibold dark:text-white text-4xl first-letter:ml-2">Notion.</span>
-        </Link>
-        <FormDescription className="text-foreground/60">
-          An all-In-One Collaboration and Productivity Platform
-        </FormDescription>
-        <FormField
-          disabled={isLoading}
-          control={form.control}
-          name="email"
-          render={({ field }) => (
-            <FormItem>
-              <FormControl>
-                <Input type="email" placeholder="Email" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          disabled={isLoading}
-          control={form.control}
-          name="password"
-          render={({ field }) => (
-            <FormItem>
-              <FormControl>
-                <Input type="password" placeholder="Password" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        {submitError && <FormMessage>{submitError}</FormMessage>}
-        <Button type="submit" className="w-full p-6" size="lg" disabled={isLoading}>
-          {!isLoading ? "SignIn" : <Loader />}
-        </Button>
-        <span className="self-container">
-          Don&apos;t have an account?
-          <Link href="/sign-up" className="text-primary ml-1">
-            Sign Up
+    <>
+      <title>Sign In</title>
+      <Form {...form}>
+        <form
+          onChange={() => {
+            if (submitError) setSubmitError("");
+          }}
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="w-full sm:justify-center sm:w-[400px] space-y-6 flex flex-col"
+        >
+          <Link href="/" className="w-full flex justify-left items-center">
+            <Image src={Logo} alt="Notion Logo" width={50} height={50} />
+            <span className="font-semibold dark:text-white text-4xl first-letter:ml-2">
+              Notion.
+            </span>
           </Link>
-        </span>
-      </form>
-    </Form>
+          <FormDescription className="text-foreground/60">
+            An all-In-One Collaboration and Productivity Platform
+          </FormDescription>
+          <FormField
+            disabled={isLoading}
+            control={form.control}
+            name="email"
+            render={({ field }) => (
+              <FormItem>
+                <FormControl>
+                  <Input type="email" placeholder="Email" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            disabled={isLoading}
+            control={form.control}
+            name="password"
+            render={({ field }) => (
+              <FormItem>
+                <FormControl>
+                  <Input type="password" placeholder="Password" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          {submitError && <FormMessage>{submitError}</FormMessage>}
+          <Button type="submit" className="w-full p-6" size="lg" disabled={isLoading}>
+            {!isLoading ? "SignIn" : <Loader />}
+          </Button>
+          <span className="self-container">
+            Don&apos;t have an account?
+            <Link href="/sign-up" className="text-primary ml-1">
+              Sign Up
+            </Link>
+          </span>
+        </form>
+      </Form>
+    </>
   );
 };
 
