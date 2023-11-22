@@ -2,7 +2,7 @@ import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import db from "@/lib/supabase/db";
 import { redirect } from "next/navigation";
-import DashboardSetup from "@/components/dashboard-setup";
+import DashboardSetup from "@/components/global/dashboard-setup";
 import { getUserSubscriptionStatus } from "@/lib/supabase/queries";
 
 const Dashboard = async () => {

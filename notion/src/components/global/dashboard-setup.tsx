@@ -1,18 +1,20 @@
 "use client";
 
 import { AuthUser } from "@supabase/supabase-js";
-import React, { useState } from "react";
+import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { v4 } from "uuid";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
-import EmojiPicker from "./global/emoji-picker";
-import { Label } from "./ui/label";
-import { Input } from "./ui/input";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../ui/card";
+import EmojiPicker from "./emoji-picker";
+import { Label } from "../ui/label";
+import { Input } from "../ui/input";
 import { Subscription, workspace } from "@/lib/supabase/supabase.types";
-import { Button } from "./ui/button";
-import Loader from "./global/loader";
+import { Button } from "../ui/button";
+import Loader from "./loader";
 import { createWorkspace } from "@/lib/supabase/queries";
+import { useToast } from "../ui/use-toast";
 import { useRouter } from "next/navigation";
+import { useAppState } from "@/lib/providers/state-provider";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { CreateWorkspaceFormSchema } from "@/lib/types";
 import { z } from "zod";
@@ -22,8 +24,10 @@ interface DashboardSetupProps {
   subscription: Subscription | null;
 }
 
-const DashboardSetup: React.FC<DashboardSetupProps> = ({ subscription, user }) => {
+const DashboardSetup = ({ subscription, user }: DashboardSetupProps) => {
+  const { toast } = useToast();
   const router = useRouter();
+  const { dispatch } = useAppState();
   const [selectedEmoji, setSelectedEmoji] = useState("💼");
   const supabase = createClientComponentClient();
   const {
@@ -57,6 +61,10 @@ const DashboardSetup: React.FC<DashboardSetupProps> = ({ subscription, user }) =
         filePath = data.path;
       } catch (error) {
         console.log("Error", error);
+        toast({
+          variant: "destructive",
+          title: "Error! Could not upload your workspace logo",
+        });
       }
     }
     try {
@@ -75,9 +83,25 @@ const DashboardSetup: React.FC<DashboardSetupProps> = ({ subscription, user }) =
       if (createError) {
         throw new Error();
       }
+      dispatch({
+        type: "ADD_WORKSPACE",
+        payload: { ...newWorkspace, folders: [] },
+      });
+
+      toast({
+        title: "Workspace Created",
+        description: `${newWorkspace.title} has been created successfully.`,
+      });
+
       router.replace(`/dashboard/${newWorkspace.id}`);
     } catch (error) {
       console.log(error, "Error");
+      toast({
+        variant: "destructive",
+        title: "Could not create your workspace",
+        description:
+          "Oops! Something went wrong, and we couldn't create your workspace. Try again or come back later.",
+      });
     } finally {
       reset();
     }
@@ -126,7 +150,7 @@ const DashboardSetup: React.FC<DashboardSetupProps> = ({ subscription, user }) =
                 type="file"
                 accept="image/*"
                 placeholder="Workspace Name"
-                // disabled={isLoading || subscription?.status !== 'active'}
+                disabled={isLoading || subscription?.status !== "active"}
                 {...register("logo", {
                   required: false,
                 })}

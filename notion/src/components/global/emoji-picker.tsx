@@ -10,7 +10,7 @@ interface EmojiPickerProps {
   getValue?: (emoji: string) => void;
 }
 
-const EmojiPicker: React.FC<EmojiPickerProps> = ({ children, getValue }) => {
+const EmojiPicker = ({ children, getValue }: EmojiPickerProps) => {
   const route = useRouter();
   const Picker = dynamic(() => import("emoji-picker-react"));
   const onClick = (selectedEmoji: any) => {

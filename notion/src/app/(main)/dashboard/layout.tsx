@@ -8,7 +8,7 @@ const DashboardLayout = async ({
   params: any;
 }) => {
   return (
-    <main className="flex over-hidden h-screen">
+    <main className="flex overflow-hidden h-screen">
       {children}
     </main>
   );

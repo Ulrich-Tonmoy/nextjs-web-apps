@@ -88,14 +88,14 @@ const Home = () => {
                 "hover:paused"
               )}
             >
-              {USERS.map((testimonial, index) => (
+              {USERS.map((testimonial) => (
                 <CustomCard
                   key={testimonial.name}
                   className="w-[500px] shrink-0s rounded-xl dark:bg-gradient-to-t dark:from-border dark:to-background"
                   cardHeader={
                     <div className="flex items-center gap-4">
                       <Avatar>
-                        <AvatarImage src={`/avatars/${index + 1}.png`} />
+                        <AvatarImage src={`/logo.svg`} />
                         <AvatarFallback>AV</AvatarFallback>
                       </Avatar>
                       <div>

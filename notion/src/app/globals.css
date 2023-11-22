@@ -132,3 +132,8 @@ ol,
 ul {
   @apply dark:text-washed-purple-700;
 }
+
+.overflow-scroll::-webkit-scrollbar,
+.overflow-hidden::-webkit-scrollbar {
+  display: none;
+}
