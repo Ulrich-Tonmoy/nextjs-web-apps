@@ -47,7 +47,6 @@ const FoldersDropdownList = ({
       });
     }
   }, [workspaceFolders, workspaceId]);
-  //state
 
   useEffect(() => {
     setFolders(
