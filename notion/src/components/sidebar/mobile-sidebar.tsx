@@ -2,7 +2,7 @@
 
 import { Menu } from "lucide-react";
 import { useState } from "react";
-import CypressPageIcon from "../icons/pageIcon";
+import PageIcon from "../icons/pageIcon";
 import clsx from "clsx";
 
 interface MobileSidebarProps {
@@ -18,7 +18,7 @@ export const nativeNavigations = [
   {
     title: "Pages",
     id: "pages",
-    customIcon: CypressPageIcon,
+    customIcon: PageIcon,
   },
 ] as const;
 
