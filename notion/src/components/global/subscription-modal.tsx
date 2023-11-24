@@ -15,6 +15,7 @@ import { Button } from "../ui/button";
 import Loader from "./loader";
 import { Price, ProductWithPrice } from "@/lib/supabase/supabase.types";
 import { useToast } from "../ui/use-toast";
+// import { getStripe } from '@/lib/stripe/stripeClient';
 
 interface SubscriptionModalProps {
   products: ProductWithPrice[];
@@ -46,6 +47,8 @@ const SubscriptionModal = ({ products }: SubscriptionModalProps) => {
       });
 
       console.log("Getting Checkout for stripe");
+      // const stripe = await getStripe();
+      // stripe?.redirectToCheckout({ sessionId });
     } catch (error) {
       toast({ title: "Oppse! Something went wrong.", variant: "destructive" });
     } finally {

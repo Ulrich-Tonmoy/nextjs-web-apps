@@ -9,7 +9,7 @@ const DashboardLayout = async ({
   params: any;
 }) => {
   const { data: products, error } = await getActiveProductsWithPrice();
-  // if (error) throw new Error();
+  if (error) console.log("asds", products);
 
   return (
     <main className="flex overflow-hidden h-screen">
