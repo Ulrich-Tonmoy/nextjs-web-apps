@@ -10,6 +10,7 @@ const ModeToggle = () => {
   return (
     <Button
       variant={"outline"}
+      className="rounded-xl"
       size="icon"
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
     >
