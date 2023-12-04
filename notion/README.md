@@ -2,27 +2,26 @@
 
 ### Features in this application.
 
-- 🤯 Real-time cursors
-- 📝 Real-time text selection
-- ⏱️ Real-time database and collaboration
-- 🟢 Real-time presence
-- 🗑️ Move to trash functionality
-- 😜 Custom emoji picker
-- 🌙 Light mode dark mode
-- 🚨 Next.js 14 app router
-- 🗺️ Creating free plan restrictions
-- 💰 Take monthly payments
-- 📧 Custom email 2FA invitation
-- 👨‍👨‍👧‍👦 Real-time Collaboration
-- 🤑 Custom Rich text editor
-- 📚 Update profile settings
-- 📍 Manage payments in a portal
-- 🔐 Supabase Authentication
-- ✳️ WebSockets
-- 📣 Optimistic UI
-- 📱 Responsive design
+- [x]🤯 Real-time cursors
+- [x]📝 Real-time text selection
+- [x]⏱️ Real-time database and collaboration
+- [x]🟢 Real-time presence
+- [x]🗑️ Move to trash functionality
+- [x]😜 Custom emoji picker
+- [x]🌙 Light mode dark mode
+- [x]🚨 Next.js 14 app router
+- [x]🗺️ Creating free plan restrictions
+- [x]💰 Take monthly payments
+- [x]📧 Custom email 2FA invitation
+- [x]👨‍👨‍👧‍👦 Real-time Collaboration
+- [x]🤑 Custom Rich text editor
+- [x]📚 Update profile settings
+- [x]📍 Manage payments in a portal
+- [x]🔐 Supabase Authentication
+- [x]✳️ WebSockets
+- [x]📣 Optimistic UI
+- [x]📱 Responsive design
 - [ ] Supabase Row level policy
-- [ ] Deployment
 
 ## Screenshots
 
