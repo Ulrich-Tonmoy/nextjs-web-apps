@@ -13,9 +13,7 @@
 - 🗺️ Creating free plan restrictions
 - 💰 Take monthly payments
 - 📧 Custom email 2FA invitation
-- ⚡️ Supabase Row level policy
 - 👨‍👨‍👧‍👦 Real-time Collaboration
-- 👾 Deployment
 - 🤑 Custom Rich text editor
 - 📚 Update profile settings
 - 📍 Manage payments in a portal
@@ -23,14 +21,34 @@
 - ✳️ WebSockets
 - 📣 Optimistic UI
 - 📱 Responsive design
+- [ ] Supabase Row level policy
+- [ ] Deployment
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Screenshots
+
+<p align="center">
+  <img alt="Landing title="Landing Page" src="./docs/1.png" width="330px"/>
+  <img alt="Landing title="Landing Page" src="./docs/2.png" width="330px"/>
+  <img alt="Landing title="Landing Page" src="./docs/3.png" width="330px"/>
+  <img alt="Landing title="Landing Page" src="./docs/4.png" width="330px"/>
+  <img alt="Sign title="Sign In" src="./docs/5.png" width="330px"/>
+  <img alt="Sign title="Sign Up" src="./docs/6.png" width="330px"/>
+  <img alt="Dashboard" title="Dashboard" src="./docs/7.png" width="330px"/>
+  <img alt="Dashboard" title="Dashboard" src="./docs/8.png" width="330px"/>
+  <img alt="Settings" title="Settings" src="./docs/9.png" width="330px"/>
+  <img alt="Settings" title="Settings" src="./docs/10.png" width="330px"/>
+  <img alt="Settings" title="Settings" src="./docs/11.png" width="330px"/>
+  <img alt="Trash" title="Trash" src="./docs/12.png" width="330px"/>
+  <img alt="Subscription" title="Subscription" src="./docs/13.png" width="330px"/>
+  <img alt="Stripe" title="Stripe" src="./docs/14.png" width="330px"/>
+</p>
 
 ## Getting Started
 
 - Create Supabase Account add email template in the authentication from Supabase 2FA Email Template from bellow.
-- Create Stripe Account.
-- Then get the credential from these account and update the `.env` file variables.
+- Create Stripe Account and get `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY` & `STRIPE_SECRET_KEY`.
+- Setup stripe cli and run `stripe listen --forward-to localhost:3000/api/webhook` to get `STRIPE_WEBHOOK_SECRET`.
+- Then update the `.env` file variables with credential from these account.
 - Then run the development server:
 
 ```bash
@@ -171,6 +189,7 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
