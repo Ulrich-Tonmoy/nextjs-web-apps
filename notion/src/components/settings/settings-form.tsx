@@ -158,9 +158,7 @@ const SettingsForm = () => {
   };
 
   useEffect(() => {
-    const showingWorkspace = state.workspaces.find(
-      (workspace) => workspace.id === workspaceId,
-    );
+    const showingWorkspace = state.workspaces.find((workspace) => workspace.id === workspaceId);
     if (showingWorkspace) setWorkspaceDetails(showingWorkspace);
   }, [workspaceId, state]);
 
@@ -223,9 +221,7 @@ const SettingsForm = () => {
                   <Lock />
                   <article className="text-left flex flex-col">
                     <span>Private</span>
-                    <p>
-                      Your workspace is private to you. You can choose to share it later.
-                    </p>
+                    <p>Your workspace is private to you. You can choose to share it later.</p>
                   </article>
                 </div>
               </SelectItem>
@@ -285,9 +281,7 @@ const SettingsForm = () => {
                   ))
                 ) : (
                   <div className="absolute right-0 left-0 top-0 bottom-0 flex justify-center items-center">
-                    <span className="text-muted-foreground text-sm">
-                      You have no collaborators
-                    </span>
+                    <span className="text-muted-foreground text-sm">You have no collaborators</span>
                   </div>
                 )}
               </ScrollArea>
@@ -296,8 +290,8 @@ const SettingsForm = () => {
         )}
         <Alert variant={"destructive"}>
           <AlertDescription>
-            Warning! deleting you workspace will permanently delete all data related to
-            this workspace.
+            Warning! deleting you workspace will permanently delete all data related to this
+            workspace.
           </AlertDescription>
           <Button
             type="submit"
@@ -345,7 +339,7 @@ const SettingsForm = () => {
         </div>
         <LogoutButton>
           <div className="flex items-center">
-            <LogOut />
+            <LogOut /> 
           </div>
         </LogoutButton>
         <p className="flex items-center gap-2 mt-6">
@@ -356,7 +350,7 @@ const SettingsForm = () => {
           You are currently on a {subscription?.status === "active" ? "Pro" : "Free"} Plan
         </p>
         <Link
-          href="/"
+          href="/#pricing"
           target="_blank"
           className="text-muted-foreground flex flex-row items-center gap-2"
         >
@@ -394,14 +388,12 @@ const SettingsForm = () => {
           <AlertDialogHeader>
             <AlertDialogTitle>Are you sure?</AlertDialogTitle>
             <AlertDescription>
-              Changing a Shared workspace to a Private workspace will remove all
-              collaborators permanently.
+              Changing a Shared workspace to a Private workspace will remove all collaborators
+              permanently.
             </AlertDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel onClick={() => setOpenAlertMessage(false)}>
-              Cancel
-            </AlertDialogCancel>
+            <AlertDialogCancel onClick={() => setOpenAlertMessage(false)}>Cancel</AlertDialogCancel>
             <AlertDialogAction onClick={onClickAlertConfirm}>Continue</AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>

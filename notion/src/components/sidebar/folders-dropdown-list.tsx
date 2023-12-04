@@ -13,16 +13,14 @@ import { Accordion } from "../ui/accordion";
 import Dropdown from "./dropdown";
 import useSupabaseRealtime from "@/lib/hooks/useSupabaseRealtime";
 import { useSubscriptionModal } from "@/lib/providers/subscription-modal-provider";
+import { MAX_FOLDERS_FREE_PLAN } from "@/lib/constants";
 
 interface FoldersDropdownListProps {
   workspaceFolders: Folder[];
   workspaceId: string;
 }
 
-const FoldersDropdownList = ({
-  workspaceFolders,
-  workspaceId,
-}: FoldersDropdownListProps) => {
+const FoldersDropdownList = ({ workspaceFolders, workspaceId }: FoldersDropdownListProps) => {
   useSupabaseRealtime();
   const { state, dispatch, folderId } = useAppState();
   const { open, setOpen } = useSubscriptionModal();
@@ -49,13 +47,11 @@ const FoldersDropdownList = ({
   }, [workspaceFolders, workspaceId]);
 
   useEffect(() => {
-    setFolders(
-      state.workspaces.find((workspace) => workspace.id === workspaceId)?.folders || [],
-    );
+    setFolders(state.workspaces.find((workspace) => workspace.id === workspaceId)?.folders || []);
   }, [state]);
 
   const addFolderHandler = async () => {
-    if (folders.length >= 3 && !subscription) {
+    if (folders.length >= MAX_FOLDERS_FREE_PLAN && !subscription) {
       setOpen(true);
       return;
     }
