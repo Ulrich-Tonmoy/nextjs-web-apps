@@ -14,9 +14,7 @@ const DashboardLayout = async ({
 
   return (
     <main className="flex overflow-hidden h-screen">
-      <SubscriptionModalProvider products={products}>
-        {children}
-      </SubscriptionModalProvider>
+      <SubscriptionModalProvider products={products}>{children}</SubscriptionModalProvider>
     </main>
   );
 };

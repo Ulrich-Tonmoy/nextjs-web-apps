@@ -25,7 +25,7 @@ import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import EmojiPicker from "../global/emoji-picker";
 import BannerUpload from "../banner-upload/banner-upload";
 import { XCircleIcon } from "lucide-react";
-// import { useSocket } from "@/lib/providers/socket-provider";
+import { useSocket } from "@/lib/providers/socket-provider";
 import { useSupabaseUser } from "@/lib/providers/supabase-user-provider";
 
 interface QuillEditorProps {
@@ -59,7 +59,7 @@ const QuillEditor = ({ dirDetails, dirType, fileId }: QuillEditorProps) => {
   const saveTimerRef = useRef<ReturnType<typeof setTimeout>>();
   const { user } = useSupabaseUser();
   const router = useRouter();
-  // const { socket, isConnected } = useSocket();
+  const { socket, isConnected } = useSocket();
   const pathname = usePathname();
   const [quill, setQuill] = useState<any>(null);
   const [collaborators, setCollaborators] = useState<
@@ -103,9 +103,7 @@ const QuillEditor = ({ dirDetails, dirType, fileId }: QuillEditorProps) => {
   const breadCrumbs = useMemo(() => {
     if (!pathname || !state.workspaces || !workspaceId) return;
     const segments = pathname.split("/").filter((val) => val !== "dashboard" && val);
-    const workspaceDetails = state.workspaces.find(
-      (workspace) => workspace.id === workspaceId,
-    );
+    const workspaceDetails = state.workspaces.find((workspace) => workspace.id === workspaceId);
     const workspaceBreadCrumb = workspaceDetails
       ? `${workspaceDetails.iconId} ${workspaceDetails.title}`
       : "";
@@ -114,9 +112,7 @@ const QuillEditor = ({ dirDetails, dirType, fileId }: QuillEditorProps) => {
     }
 
     const folderSegment = segments[1];
-    const folderDetails = workspaceDetails?.folders.find(
-      (folder) => folder.id === folderSegment,
-    );
+    const folderDetails = workspaceDetails?.folders.find((folder) => folder.id === folderSegment);
     const folderBreadCrumb = folderDetails
       ? `/ ${folderDetails.iconId} ${folderDetails.title}`
       : "";
@@ -127,9 +123,7 @@ const QuillEditor = ({ dirDetails, dirType, fileId }: QuillEditorProps) => {
 
     const fileSegment = segments[2];
     const fileDetails = folderDetails?.files.find((file) => file.id === fileSegment);
-    const fileBreadCrumb = fileDetails
-      ? `/ ${fileDetails.iconId} ${fileDetails.title}`
-      : "";
+    const fileBreadCrumb = fileDetails ? `/ ${fileDetails.iconId} ${fileDetails.title}` : "";
 
     return `${workspaceBreadCrumb} ${folderBreadCrumb} ${fileBreadCrumb}`;
   }, [state, pathname, workspaceId]);
@@ -332,110 +326,107 @@ const QuillEditor = ({ dirDetails, dirType, fileId }: QuillEditorProps) => {
     fetchInformation();
   }, [fileId, workspaceId, quill, dirType]);
 
-  // useEffect(() => {
-  //   if (quill === null || socket === null || !fileId || !localCursors.length) return;
-  //   const socketHandler = (range: any, roomId: string, cursorId: string) => {
-  //     if (roomId === fileId) {
-  //       const cursorToMove = localCursors.find(
-  //         (c: any) => c.cursors()?.[0].id === cursorId,
-  //       );
-  //       if (cursorToMove) {
-  //         cursorToMove.moveCursor(cursorId, range);
-  //       }
-  //     }
-  //   };
-  //   socket.on("receive-cursor-move", socketHandler);
-  //   return () => {
-  //     socket.off("receive-cursor-move", socketHandler);
-  //   };
-  // }, [quill, socket, fileId, localCursors]);
+  useEffect(() => {
+    if (quill === null || socket === null || !fileId || !localCursors.length) return;
+    const socketHandler = (range: any, roomId: string, cursorId: string) => {
+      if (roomId === fileId) {
+        const cursorToMove = localCursors.find((c: any) => c.cursors()?.[0].id === cursorId);
+        if (cursorToMove) {
+          cursorToMove.moveCursor(cursorId, range);
+        }
+      }
+    };
+    socket.on("receive-cursor-move", socketHandler);
+    return () => {
+      socket.off("receive-cursor-move", socketHandler);
+    };
+  }, [quill, socket, fileId, localCursors]);
 
-  // useEffect(() => {
-  //   if (socket === null || quill === null || !fileId) return;
-  //   socket.emit("create-room", fileId);
-  // }, [socket, quill, fileId]);
+  useEffect(() => {
+    if (socket === null || quill === null || !fileId) return;
+    socket.emit("create-room", fileId);
+  }, [socket, quill, fileId]);
 
-  //Send quill changes to all clients
-  // useEffect(() => {
-  //   if (quill === null || socket === null || !fileId || !user) return;
+  useEffect(() => {
+    if (quill === null || socket === null || !fileId || !user) return;
 
-  //   const selectionChangeHandler = (cursorId: string) => {
-  //     return (range: any, oldRange: any, source: any) => {
-  //       if (source === "user" && cursorId) {
-  //         socket.emit("send-cursor-move", range, fileId, cursorId);
-  //       }
-  //     };
-  //   };
-  //   const quillHandler = (delta: any, oldDelta: any, source: any) => {
-  //     if (source !== "user") return;
-  //     if (saveTimerRef.current) clearTimeout(saveTimerRef.current);
-  //     setSaving(true);
-  //     const contents = quill.getContents();
-  //     const quillLength = quill.getLength();
-  //     saveTimerRef.current = setTimeout(async () => {
-  //       if (contents && quillLength !== 1 && fileId) {
-  //         if (dirType == "workspace") {
-  //           dispatch({
-  //             type: "UPDATE_WORKSPACE",
-  //             payload: {
-  //               workspace: { data: JSON.stringify(contents) },
-  //               workspaceId: fileId,
-  //             },
-  //           });
-  //           await updateWorkspace({ data: JSON.stringify(contents) }, fileId);
-  //         }
-  //         if (dirType == "folder") {
-  //           if (!workspaceId) return;
-  //           dispatch({
-  //             type: "UPDATE_FOLDER",
-  //             payload: {
-  //               folder: { data: JSON.stringify(contents) },
-  //               workspaceId,
-  //               folderId: fileId,
-  //             },
-  //           });
-  //           await updateFolder({ data: JSON.stringify(contents) }, fileId);
-  //         }
-  //         if (dirType == "file") {
-  //           if (!workspaceId || !folderId) return;
-  //           dispatch({
-  //             type: "UPDATE_FILE",
-  //             payload: {
-  //               file: { data: JSON.stringify(contents) },
-  //               workspaceId,
-  //               folderId: folderId,
-  //               fileId,
-  //             },
-  //           });
-  //           await updateFile({ data: JSON.stringify(contents) }, fileId);
-  //         }
-  //       }
-  //       setSaving(false);
-  //     }, 850);
-  //     socket.emit("send-changes", delta, fileId);
-  //   };
-  //   quill.on("text-change", quillHandler);
-  //   quill.on("selection-change", selectionChangeHandler(user.id));
+    const selectionChangeHandler = (cursorId: string) => {
+      return (range: any, oldRange: any, source: any) => {
+        if (source === "user" && cursorId) {
+          socket.emit("send-cursor-move", range, fileId, cursorId);
+        }
+      };
+    };
+    const quillHandler = (delta: any, oldDelta: any, source: any) => {
+      if (source !== "user") return;
+      if (saveTimerRef.current) clearTimeout(saveTimerRef.current);
+      setSaving(true);
+      const contents = quill.getContents();
+      const quillLength = quill.getLength();
+      saveTimerRef.current = setTimeout(async () => {
+        if (contents && quillLength !== 1 && fileId) {
+          if (dirType == "workspace") {
+            dispatch({
+              type: "UPDATE_WORKSPACE",
+              payload: {
+                workspace: { data: JSON.stringify(contents) },
+                workspaceId: fileId,
+              },
+            });
+            await updateWorkspace({ data: JSON.stringify(contents) }, fileId);
+          }
+          if (dirType == "folder") {
+            if (!workspaceId) return;
+            dispatch({
+              type: "UPDATE_FOLDER",
+              payload: {
+                folder: { data: JSON.stringify(contents) },
+                workspaceId,
+                folderId: fileId,
+              },
+            });
+            await updateFolder({ data: JSON.stringify(contents) }, fileId);
+          }
+          if (dirType == "file") {
+            if (!workspaceId || !folderId) return;
+            dispatch({
+              type: "UPDATE_FILE",
+              payload: {
+                file: { data: JSON.stringify(contents) },
+                workspaceId,
+                folderId: folderId,
+                fileId,
+              },
+            });
+            await updateFile({ data: JSON.stringify(contents) }, fileId);
+          }
+        }
+        setSaving(false);
+      }, 850);
+      socket.emit("send-changes", delta, fileId);
+    };
+    quill.on("text-change", quillHandler);
+    quill.on("selection-change", selectionChangeHandler(user.id));
 
-  //   return () => {
-  //     quill.off("text-change", quillHandler);
-  //     quill.off("selection-change", selectionChangeHandler);
-  //     if (saveTimerRef.current) clearTimeout(saveTimerRef.current);
-  //   };
-  // }, [quill, socket, fileId, user, details, folderId, workspaceId, dispatch]);
+    return () => {
+      quill.off("text-change", quillHandler);
+      quill.off("selection-change", selectionChangeHandler);
+      if (saveTimerRef.current) clearTimeout(saveTimerRef.current);
+    };
+  }, [quill, socket, fileId, user, details, folderId, workspaceId, dispatch]);
 
-  // useEffect(() => {
-  //   if (quill === null || socket === null) return;
-  //   const socketHandler = (deltas: any, id: string) => {
-  //     if (id === fileId) {
-  //       quill.updateContents(deltas);
-  //     }
-  //   };
-  //   socket.on("receive-changes", socketHandler);
-  //   return () => {
-  //     socket.off("receive-changes", socketHandler);
-  //   };
-  // }, [quill, socket, fileId]);
+  useEffect(() => {
+    if (quill === null || socket === null) return;
+    const socketHandler = (deltas: any, id: string) => {
+      if (id === fileId) {
+        quill.updateContents(deltas);
+      }
+    };
+    socket.on("receive-changes", socketHandler);
+    return () => {
+      socket.off("receive-changes", socketHandler);
+    };
+  }, [quill, socket, fileId]);
 
   useEffect(() => {
     if (!fileId || quill === null) return;
@@ -454,11 +445,11 @@ const QuillEditor = ({ dirDetails, dirType, fileId }: QuillEditorProps) => {
                 userCursor.createCursor(
                   collaborator.id,
                   collaborator.email.split("@")[0],
-                  `#${Math.random().toString(16).slice(2, 8)}`,
+                  `#${Math.random().toString(16).slice(2, 8)}`
                 );
                 allCursors.push(userCursor);
               }
-            },
+            }
           );
           setLocalCursors(allCursors);
         }
@@ -472,8 +463,7 @@ const QuillEditor = ({ dirDetails, dirType, fileId }: QuillEditorProps) => {
           id: user.id,
           email: user.email?.split("@")[0],
           avatarUrl: response.avatarUrl
-            ? supabase.storage.from("avatars").getPublicUrl(response.avatarUrl).data
-                .publicUrl
+            ? supabase.storage.from("avatars").getPublicUrl(response.avatarUrl).data.publicUrl
             : "",
         });
       });
@@ -534,17 +524,11 @@ const QuillEditor = ({ dirDetails, dirType, fileId }: QuillEditorProps) => {
               ))}
             </div>
             {saving ? (
-              <Badge
-                variant="secondary"
-                className="bg-orange-600 top-4 text-white right-4 z-50"
-              >
+              <Badge variant="secondary" className="bg-orange-600 top-4 text-white right-4 z-50">
                 Saving...
               </Badge>
             ) : (
-              <Badge
-                variant="secondary"
-                className="bg-emerald-600 top-4 text-white right-4 z-50"
-              >
+              <Badge variant="secondary" className="bg-emerald-600 top-4 text-white right-4 z-50">
                 Saved
               </Badge>
             )}
@@ -555,8 +539,7 @@ const QuillEditor = ({ dirDetails, dirType, fileId }: QuillEditorProps) => {
         <div className="relative w-full h-[200px]">
           <Image
             src={
-              supabase.storage.from("file-banners").getPublicUrl(details.bannerUrl).data
-                .publicUrl
+              supabase.storage.from("file-banners").getPublicUrl(details.bannerUrl).data.publicUrl
             }
             fill
             className="w-full md:h-48 h-20 object-cover"
@@ -593,9 +576,7 @@ const QuillEditor = ({ dirDetails, dirType, fileId }: QuillEditorProps) => {
               </Button>
             )}
           </div>
-          <span className="text-muted-foreground text-3xl font-bold h-9">
-            {details.title}
-          </span>
+          <span className="text-muted-foreground text-3xl font-bold h-9">{details.title}</span>
           <span className="text-muted-foreground text-sm">{dirType.toUpperCase()}</span>
         </div>
         <div id="container" className="max-w-[800px]" ref={wrapperRef}></div>
