@@ -7,6 +7,9 @@
   <a href="./notion"title="Notion">
     <img alt="Notion" src="./notion/docs/7.png" width="330px"/>
   </a>
+  <a href="./file-manager" title="File Manager">
+    <img alt="File Manager" src="./file-manager/public/ss.png" width="330px"/>
+  </a>
   <a href="./realstate"title="RealState">
     <img alt="RealState" src="./realstate/docs/ss1.png" width="330px"/>
   </a>
